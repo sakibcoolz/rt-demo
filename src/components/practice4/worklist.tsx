@@ -8,13 +8,9 @@ const TaskForm: React.FC = () => {
         status: 'pending'
     });
 
-    const handleInputChange = (
-        e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>
-    ) => {
+    const handleInputChange = (e: React.ChangeEvent<HTMLTextAreaElement | HTMLSelectElement>) => {
         const { name, value } = e.target;
-        setFormState(prevState => ({
-            ...prevState, [name]: value
-        }));
+        setFormState({...formState, [name]: value});
     };
 
     const handleSubmit = (e: React.FormEvent) => {
@@ -35,7 +31,7 @@ const TaskForm: React.FC = () => {
                 <label htmlFor="task">Task:</label>
                 <textarea
                     id="task"
-                    name="tasks"
+                    name="task"
                     value={formState.task}
                     onChange={handleInputChange}
                     required
