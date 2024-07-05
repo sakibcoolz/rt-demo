@@ -2,7 +2,8 @@ import React, { useState } from 'react';
 import { Data } from '../../model/model';
 
 const TaskForm: React.FC = () => {
-    let datas: Data[];
+    let datas: Array<Data> = [];
+    let skm: Data;
     const [formState, setFormState] = useState<Data>({
         task: '',
         status: 'pending'
@@ -15,14 +16,11 @@ const TaskForm: React.FC = () => {
 
     const handleSubmit = (e: React.FormEvent) => {
         e.preventDefault();
+        console.log(formState);
         // Add your form submission logic here
-        datas.push(formState);
+        datas.push({status: formState.status, task: formState.task});
         console.log(datas);
-        setFormState({
-            status: "",
-            task: ""
-        });
-
+        
     };
 
     return (
